@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>21 | Pharma Fest 2.0 | Sub Pharma Club</title>
+<meta name="description" content="Pharma Fest 2.0 is on 21 November 2026, 8 AM. Organized by Sub Pharma Club.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f1f7ee;
+    --ink: #07170c;
+    --lime: #b7f03c;
+    --leaf: #0f7a3d;
+    --sun: #ffc21f;
+    --soft: #4d6655;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--paper); color: var(--ink); font-family: "Space Grotesk", system-ui, sans-serif; overflow-x: hidden; }
+  .big { font-family: "Anton", Impact, "Arial Narrow", sans-serif; font-weight: 400; line-height: .88; letter-spacing: .01em; }
+  :focus-visible { outline: 3px solid var(--leaf); outline-offset: 3px; }
+
+  /* ---------- HERO ---------- */
+  .hero { padding: clamp(1.5rem, 4vw, 3rem) 0 clamp(2.5rem, 6vw, 4rem); }
+  .presents { font-weight: 500; color: var(--soft); font-size: 1.05rem; margin-bottom: 1rem; }
+  .twentyone { font-size: clamp(10rem, 34vw, 24rem); margin: 0; color: var(--ink); position: relative; display: inline-block; }
+  .twentyone::after {
+    content: ""; position: absolute; left: 4%; right: 4%; bottom: 8%; height: 16%;
+    background: var(--lime); z-index: -1; transform: skew(-12deg);
+  }
+  .month { font-size: clamp(2.2rem, 7vw, 4.2rem); display: block; margin-top: .3rem; }
+  .month small { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: .32em; vertical-align: middle; margin-left: .6rem; padding: .35rem .8rem; background: var(--sun); border-radius: 999px; letter-spacing: 0; }
+  .sub { font-size: 1.2rem; max-width: 26rem; margin-top: 1.5rem; color: var(--soft); line-height: 1.55; }
+
+  .poster-wrap { position: relative; max-width: 460px; margin: 0 auto; padding: 1rem; }
+  .poster {
+    background: #000; border-radius: 2rem; overflow: hidden; transform: rotate(3deg);
+    box-shadow: 14px 14px 0 var(--leaf);
+  }
+  .poster img { display: block; width: 100%; height: auto; }
+  .sticker {
+    position: absolute; left: -4px; bottom: -14px; width: 128px; height: 128px; border-radius: 50%;
+    background: #fff; padding: 6px; transform: rotate(-10deg); border: 3px solid var(--ink);
+    box-shadow: 5px 5px 0 var(--sun);
+  }
+  .sticker img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; display: block; }
+
+  /* ---------- TICKER ---------- */
+  .ticker { background: var(--ink); color: var(--lime); overflow: hidden; white-space: nowrap; padding: .85rem 0; transform: rotate(-1.2deg); margin: 0 -2vw; }
+  .ticker .track { display: inline-flex; gap: 2.5rem; padding-left: 2.5rem; animation: slide 28s linear infinite; font-size: 1.6rem; }
+  .ticker span { display: inline-flex; align-items: center; gap: 2.5rem; }
+  .ticker span::after { content: ""; width: .7rem; height: .7rem; background: var(--sun); border-radius: 50%; }
+  @keyframes slide { to { transform: translateX(-50%); } }
+
+  /* ---------- COUNTDOWN ---------- */
+  .count { padding: clamp(3rem, 7vw, 5.5rem) 0; }
+  .count h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-family: "Space Grotesk", sans-serif; font-weight: 700; margin-bottom: 1.5rem; }
+  .clock { background: var(--lime); border: 3px solid var(--ink); border-radius: 1.75rem; box-shadow: 10px 10px 0 var(--ink); }
+  .clock .cell { text-align: center; padding: clamp(1rem, 3vw, 2rem) .5rem; }
+  .clock .cell + .cell { border-left: 3px solid var(--ink); }
+  @media (max-width: 767.98px) {
+    .clock .cell:nth-child(3) { border-left: 0; }
+    .clock .cell:nth-child(n+3) { border-top: 3px solid var(--ink); }
+  }
+  .clock .n { font-size: clamp(3.2rem, 11vw, 7rem); display: block; font-variant-numeric: tabular-nums; }
+  .clock .l { font-weight: 700; font-size: 1rem; }
+  #live { display: none; font-size: clamp(2.5rem, 8vw, 5rem); padding: 2rem 0; }
+
+  .btns { display: flex; flex-wrap: wrap; gap: .9rem; margin-top: 2.5rem; }
+  .btn-a { background: var(--ink); color: var(--lime); border: 3px solid var(--ink); border-radius: 999px; font-weight: 700; padding: .8rem 1.7rem; transition: transform .15s; }
+  .btn-a:hover { color: var(--lime); transform: translateY(-3px); }
+  .btn-b { background: transparent; color: var(--ink); border: 3px solid var(--ink); border-radius: 999px; font-weight: 700; padding: .8rem 1.7rem; }
+  .btn-b:hover { background: var(--sun); color: var(--ink); }
+
+  /* ---------- DETAILS ---------- */
+  .facts { padding: 0 0 clamp(3rem, 7vw, 5rem); }
+  .fact { background: #fff; border: 3px solid var(--ink); border-radius: 1.5rem; padding: 1.5rem; height: 100%; }
+  .fact:nth-child(1) { box-shadow: 6px 6px 0 var(--lime); }
+  .fact h3 { font-size: 2rem; margin-bottom: .6rem; }
+  .fact p { margin: 0; font-size: 1.1rem; line-height: 1.5; color: var(--soft); }
+  .fact p b { color: var(--ink); }
+  .col-md-4:nth-child(2) .fact { box-shadow: 6px 6px 0 var(--sun); }
+  .col-md-4:nth-child(3) .fact { box-shadow: 6px 6px 0 var(--leaf); }
+
+  .about { background: var(--ink); color: var(--paper); padding: clamp(3rem, 7vw, 5rem) 0; }
+  .about .tile { width: 150px; height: 150px; background: #fff; border-radius: 1.5rem; padding: .6rem; flex: none; }
+  .about .tile img { width: 100%; height: 100%; object-fit: contain; }
+  .about h2 { font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: .8rem; }
+  .about p { color: #b6cbbd; font-size: 1.1rem; line-height: 1.65; max-width: 34rem; }
+  .about .motto { color: var(--sun); font-weight: 700; font-size: 1.2rem; }
+
+  footer { padding: 1.6rem 0; font-size: 1rem; font-weight: 700; color: var(--ink); background: var(--lime); border-top: 8px solid var(--sun); }
+
+  @media (prefers-reduced-motion: reduce) { .ticker .track { animation: none; } html { scroll-behavior: auto; } }
+
+  /* ---------- NAVBAR ---------- */
+  section, header { scroll-margin-top: 80px; }
+  .topnav { background: var(--paper); border-bottom: 3px solid var(--ink); padding: .6rem 0; }
+  .brand-logo { width: 42px; height: 42px; border-radius: 50%; border: 2px solid var(--ink); background: #fff; object-fit: contain; }
+  .topnav .navbar-brand span { font-size: 1.5rem; line-height: 1; color: var(--ink); }
+  .topnav .navbar-toggler { border: 2px solid var(--ink); border-radius: .75rem; }
+  .topnav .navbar-toggler:focus { box-shadow: 0 0 0 3px var(--lime); }
+  .topnav .nav-link { font-weight: 700; color: var(--ink); padding: .5rem 1rem; border-radius: 999px; }
+  .topnav .nav-link:hover { background: var(--lime); }
+  .left-pill { display: inline-block; background: var(--ink); color: var(--lime); font-weight: 700; padding: .45rem 1rem; border-radius: 999px; font-variant-numeric: tabular-nums; margin: .5rem 0 .25rem; }
+  @media (min-width: 768px) { .left-pill { margin: 0; } }
+
+  /* ---------- CENTERED HERO ---------- */
+  .twentyone { font-size: clamp(9rem, 30vw, 19rem); }
+  .month { font-size: clamp(2.2rem, 8vw, 4.4rem); }
+  .hero .poster-wrap { max-width: 300px; }
+  .side { display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+  @media (min-width: 992px) { .side { flex-direction: column; gap: 1.75rem; } }
+  .sticker2 { width: 140px; height: 140px; border-radius: 50%; background: #fff; padding: 6px; border: 3px solid var(--ink); box-shadow: 5px 5px 0 var(--sun); transform: rotate(8deg); }
+  .sticker2 img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; display: block; }
+  .daysbadge { width: 140px; height: 140px; border-radius: 50%; background: var(--sun); border: 3px solid var(--ink); box-shadow: 5px 5px 0 var(--ink); transform: rotate(-7deg); display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .daysbadge .big { font-size: 3.6rem; }
+  .daysbadge span:last-child { font-weight: 700; font-size: .85rem; margin-top: .15rem; }
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md sticky-top topnav">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2 m-0" href="#top">
+      <img class="brand-logo" src="Assets/Pharma Fest  Logo.png">
+      <span class="big">Pharma Fest 2.0</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Open menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav ms-auto align-items-md-center gap-md-1">
+        <li class="nav-item"><a class="nav-link" href="#countdown-sec">Countdown</a></li>
+        <li class="nav-item"><a class="nav-link" href="#details">Details</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item ms-md-2"><span class="left-pill" id="navLeft" aria-live="off">-- left</span></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header class="hero text-center" id="top">
+  <div class="container">
+    <div class="row align-items-center g-4 g-lg-3">
+      <div class="col-lg-3 order-2 order-lg-1">
+        <div class="poster-wrap"><div class="poster"><img src="Assets/Fest dark bgr.png" alt="Pharma Fest 2.0 logo"></div></div>
+      </div>
+      <div class="col-lg-6 order-1 order-lg-2">
+        <p class="presents">Sub Pharma Club presents</p>
+        <h1 class="big twentyone">21</h1>
+        <span class="big month">November <small>8:00 AM</small></span>
+        <p class="sub mx-auto">Pharma Fest 2.0 is almost here. Southern University Bangladesh, Department of Pharmacy.</p>
+      </div>
+      <div class="col-lg-3 order-3">
+        <div class="side">
+          <div class="sticker2"><img src="Assets/Sub Pharma Club Crest.png" alt="Sub Pharma Club logo"></div>
+          <div class="daysbadge"><span class="big" id="badgeDays">--</span><span id="badgeLabel">days to go</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="ticker" aria-hidden="true">
+  <div class="track big">
+    <span>PHARMA FEST 2.0</span><span>21 NOVEMBER</span><span>8 AM</span><span>SUB PHARMA CLUB</span>
+    <span>PHARMA FEST 2.0</span><span>21 NOVEMBER</span><span>8 AM</span><span>SUB PHARMA CLUB</span>
+    <span>PHARMA FEST 2.0</span><span>21 NOVEMBER</span><span>8 AM</span><span>SUB PHARMA CLUB</span>
+    <span>PHARMA FEST 2.0</span><span>21 NOVEMBER</span><span>8 AM</span><span>SUB PHARMA CLUB</span>
+  </div>
+</div>
+
+<main>
+  <section class="count" id="countdown-sec">
+    <div class="container">
+      <h2>Time left. Make it count.</h2>
+      <div class="clock" id="countdown" role="timer" aria-label="Time left until Pharma Fest 2.0">
+        <div class="row g-0">
+          <div class="col-6 col-md-3 cell"><span class="big n" id="days">00</span><span class="l">days</span></div>
+          <div class="col-6 col-md-3 cell"><span class="big n" id="hours">00</span><span class="l">hours</span></div>
+          <div class="col-6 col-md-3 cell"><span class="big n" id="minutes">00</span><span class="l">minutes</span></div>
+          <div class="col-6 col-md-3 cell"><span class="big n" id="seconds">00</span><span class="l">seconds</span></div>
+        </div>
+      </div>
+      <div id="live" class="big"></div>
+      <div class="btns">
+        <a id="cal" class="btn btn-a" target="_blank" rel="noopener" href="#">Add to my calendar</a>
+        <button id="share" class="btn btn-b" type="button" >Tell a friend</button>
+      </div>
+      <p id="note" class="mt-3 mb-0 fw-bold" style="color:var(--leaf);min-height:1.5em" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section class="facts" id="details">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4"><div class="fact"><h3 class="big">When</h3><p><b>Saturday, 21 November 2026</b><br>Doors open at 8:00 AM</p></div></div>
+        <div class="col-md-4"><div class="fact"><h3 class="big">Where</h3><p><b>Southern University Bangladesh</b><br>Chattogram</p></div></div>
+        <div class="col-md-4"><div class="fact"><h3 class="big">Who</h3><p><b>Sub Pharma Club</b><br>Department of Pharmacy</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="container">
+      <div class="d-flex flex-column flex-sm-row align-items-sm-center gap-4">
+        <div class="tile"><img src="Assets/Sub Pharma Club Crest.png" alt="Sub Pharma Club logo"></div>
+        <div>
+          <h2 class="big">Made by students, for students</h2>
+          <p>Sub Pharma Club has brought pharmacy students together since 2023. Pharma Fest 2.0 is their next big step.</p>
+          <div class="motto">Stop Wishing, Start Doing</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="text-center">&copy; 2026 Pharma Fest 2.0 &middot; Sub Pharma Club, Department of Pharmacy, Southern University Bangladesh</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Edit here to change the date. +06:00 is Bangladesh time.
+  const EVENT_START = new Date("2026-11-21T08:00:00+06:00");
+  const EVENT_LENGTH_HOURS = 10;
+
+  const $ = id => document.getElementById(id);
+  const pad = n => String(n).padStart(2, "0");
+
+  function tick() {
+    const now = new Date(), diff = EVENT_START - now;
+    if (diff <= 0) {
+      const over = now - EVENT_START > EVENT_LENGTH_HOURS * 3600000;
+      $("countdown").style.display = "none";
+      const live = $("live"); live.style.display = "block";
+      live.textContent = over ? "Thank you for being part of Pharma Fest 2.0!" : "It is happening right now!";
+      if (over) clearInterval(timer);
+      return;
+    }
+    const s = Math.floor(diff / 1000);
+    $("days").textContent = pad(Math.floor(s / 86400));
+    $("hours").textContent = pad(Math.floor(s % 86400 / 3600));
+    $("minutes").textContent = pad(Math.floor(s % 3600 / 60));
+    $("seconds").textContent = pad(s % 60);
+  }
+  const timer = setInterval(tick, 1000); tick();
+
+  // 08:00 to 18:00 Bangladesh time = 02:00 to 12:00 UTC
+  $("cal").href = "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+    "&text=" + encodeURIComponent("Pharma Fest 2.0") +
+    "&dates=20261121T020000Z/20261121T120000Z" +
+    "&location=" + encodeURIComponent("Southern University Bangladesh, Chattogram") +
+    "&details=" + encodeURIComponent("Organized by Sub Pharma Club, Department of Pharmacy.");
+
+  // Live mini countdown in the navbar and the round badge
+  function mini() {
+    const diff = EVENT_START - new Date();
+    const nl = $("navLeft"), bd = $("badgeDays"), bl = $("badgeLabel");
+    if (diff <= 0) {
+      const over = Date.now() - EVENT_START > EVENT_LENGTH_HOURS * 3600000;
+      nl.textContent = over ? "Event ended" : "Live now";
+      bd.textContent = over ? "Done" : "Live";
+      bl.textContent = over ? "thank you" : "happening";
+      return;
+    }
+    const s = Math.floor(diff / 1000), d = Math.floor(s / 86400);
+    nl.textContent = d + "d " + pad(Math.floor(s % 86400 / 3600)) + "h " + pad(Math.floor(s % 3600 / 60)) + "m left";
+    bd.textContent = d;
+    bl.textContent = d === 1 ? "day to go" : "days to go";
+  }
+  setInterval(mini, 1000); mini();
+
+  // Close the mobile menu after tapping a link
+  document.querySelectorAll("#menu .nav-link").forEach(a => a.addEventListener("click", () => {
+    const c = bootstrap.Collapse.getInstance($("menu")); if (c) c.hide();
+  }));
+
+  $("share").addEventListener("click", async () => {
+    const d = { title: "Pharma Fest 2.0", text: "Pharma Fest 2.0 is on 21 November, 8 AM!", url: location.href };
+    try {
+      if (navigator.share) await navigator.share(d);
+      else { await navigator.clipboard.writeText(d.url); $("note").textContent = "Link copied. Send it to your batchmates!"; }
+    } catch (e) {}
+  });
+</script>
+</body>
+</html>
